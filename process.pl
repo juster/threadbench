@@ -6,26 +6,25 @@ use Time::HiRes qw/time/;
 use List::Util  qw(sum);
 
 sub workfunc {
-    my $start = time();
-    print "Thread " . threads::tid() . " :: started at " . localtime() . "\n";
-    my $init = shift;
+    printf "Thread %d :: started at %s\n", threads::tid(), scalar localtime;
+    my $start = time;
+    my $init  = shift;
     for ( 1 .. 10_000_000 ) {
         $init += ( ( $_ % 4 ) * ( $_ % 4 ) ) / ( $_ % 10 + 1 );
     }
-    my $runtime = time() - $start;
-    print "Thread " . threads::tid() . " :: stopped at " . localtime() . "\n";
-    return $runtime;
+    printf "Thread %d :: stopped at %s\n", threads::tid(), scalar localtime;
+    return time - $start;
 }
 
 my $num_threads = shift || 2;
 print "Running with $num_threads threads\n";
 
-my $master_start = time();
+my $master_start = time;
 my @threads =
-  map { threads->create( \&workfunc, rand(10) ); } 1 .. $num_threads;
+  map { threads->create( \&workfunc, rand 10 ); } 1 .. $num_threads;
 
 my $thread_time = sum map { $_->join() } @threads;
-my $master_time = time() - $master_start;
+my $master_time = time - $master_start;
 
-print "Master logged $master_time runtime\n";
-print "Threads reported $thread_time combined runtime\n";
+printf "Master logged %.3f runtime\n", $master_time;
+printf "Threads reported %.3f combined runtime\n", $thread_time;
