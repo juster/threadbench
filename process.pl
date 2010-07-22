@@ -9,9 +9,7 @@ sub workfunc {
     printf "Thread %d :: started at %s\n", threads::tid(), scalar localtime;
     my $start = time;
     my $init  = shift;
-    for ( 1 .. 10_000_000 ) {
-        $init += ( ( $_ % 4 ) * ( $_ % 4 ) ) / ( $_ % 10 + 1 );
-    }
+    $init += ( $_ % 4 ) * ( $_ % 4 ) / ( $_ % 10 + 1 ) for 1 .. 10_000_000;
     printf "Thread %d :: stopped at %s\n", threads::tid(), scalar localtime;
     return time - $start;
 }
