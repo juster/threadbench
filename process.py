@@ -1,5 +1,5 @@
 from multiprocessing import Process, Queue
-from random          import randint
+from random          import random
 from time            import asctime, time
 from sys             import argv
 
@@ -15,6 +15,7 @@ def worker ( id, init ):
     timequeue.put( time() - start )
     print "Process %s :: stopped at %s" % ( id, asctime() )
 
+    # Perl is easier, we cannot return values directly from processes here
     return
 
 proc_count = 2
@@ -28,7 +29,7 @@ start = time()
 procs = []
 
 for i in range( 1, proc_count ):
-    Process( target = worker, args = ( i, randint( 0, 10 ) )).start()
+    Process( target = worker, args = ( i, random() * 10 )).start()
 
 timesum = 0
 for i in range( 1, proc_count ):
