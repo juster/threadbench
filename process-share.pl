@@ -14,20 +14,20 @@ $counter = 0;
 sub workfunc {
     my ($id, $init) = @_;
 
-    printf "Thread %d :: started at %s\n", $id, scalar localtime;
+    printf "Process %d :: started at %s\n", $id, scalar localtime;
     my $start = time;
     for ( 1 .. 10_000_000 ) {
         $init += ( $_ % 4 ) * ( $_ % 4 ) / ( $_ % 10 + 1 );
         lock $counter;
         ++$counter;
     }
-    printf "Thread %d :: stopped at %s\n", $id, scalar localtime;
+    printf "Process %d :: stopped at %s\n", $id, scalar localtime;
 
     return time - $start;
 }
 
 my $num_threads = shift || 2;
-print "Running with $num_threads threads\n";
+print "Running with $num_threads processes\n";
 
 my $master_start = time;
 my @threads =
@@ -37,5 +37,5 @@ my $thread_time = sum map { $_->join() } @threads;
 my $master_time = time - $master_start;
 
 printf "Master logged %.3f runtime\n", $master_time;
-printf "Threads reported %.3f combined runtime\n", $thread_time;
+printf "Processes reported %.3f combined runtime\n", $thread_time;
 print  "Shared counter equals $counter\n";
