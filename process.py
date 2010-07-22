@@ -35,5 +35,5 @@ timesum = 0
 for i in range( 1, proc_count ):
     timesum += timequeue.get()
 
-print "Master logged %f runtime" % (time() - start)
-print "Threads reported %f combined runtime" % (timesum)
+print "Master logged %.3f runtime" % (time() - start)
+print "Threads reported %.3f combined runtime" % (timesum)
