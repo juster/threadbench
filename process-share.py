@@ -4,7 +4,8 @@ from time            import asctime, time
 from sys             import argv
 
 timequeue = Queue()
-counter   = Value( 'd', 0, lock = False ) # shared memory between processes
+# The below doesn't work with python 2.6 included with Mac OS X... bug?
+counter   = Value( 'd', 0, lock = False )
 lock      = Lock()
 
 def worker ( id, init ):
