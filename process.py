@@ -9,7 +9,7 @@ def worker ( id, init ):
     start = time()
     print "Process %d :: started at %s" % ( id, asctime() )
 
-    for i in xrange( 1, 10000000 ):
+    for i in xrange( 1, 10000001 ):
         init += ( i % 4 ) * ( i % 4 ) / ( i % 10 + 1 )
 
     timequeue.put( time() - start )
