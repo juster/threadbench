@@ -6,11 +6,13 @@ use Time::HiRes qw/time/;
 use List::Util  qw(sum);
 
 sub workfunc {
-    printf "Thread %d :: started at %s\n", threads::tid(), scalar localtime;
+    my ($id, $init) = @_;
+
+    printf "Thread %d :: started at %s\n", $id, scalar localtime;
     my $start = time;
-    my $init  = shift;
     $init += ( $_ % 4 ) * ( $_ % 4 ) / ( $_ % 10 + 1 ) for 1 .. 10_000_000;
-    printf "Thread %d :: stopped at %s\n", threads::tid(), scalar localtime;
+    printf "Thread %d :: stopped at %s\n", $id, scalar localtime;
+
     return time - $start;
 }
 
@@ -19,7 +21,7 @@ print "Running with $num_threads threads\n";
 
 my $master_start = time;
 my @threads =
-  map { threads->create( \&workfunc, rand 10 ); } 1 .. $num_threads;
+  map { threads->create( \&workfunc, $_, rand 10 ); } 1 .. $num_threads;
 
 my $thread_time = sum map { $_->join() } @threads;
 my $master_time = time - $master_start;
