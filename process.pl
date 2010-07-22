@@ -1,9 +1,11 @@
-use strict;
+#!/usr/bin/perl
+
 use warnings;
-use threads;
-use threads::shared;
-use Time::HiRes qw/time/;
+use strict;
+
+use Time::HiRes qw(time);
 use List::Util  qw(sum);
+use threads;
 
 sub workfunc {
     my ($id, $init) = @_;
