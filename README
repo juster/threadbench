@@ -1,0 +1,11 @@
+This is a tiny set of benchmarks to compare concurrency between perl
+and python.  A trivial debate was sparked by my comments on Jared's
+benchmarks at his "A Curious Programmer" blog, available at
+http://xrl.us/bht5vc. I jokingly mentioned we should benchmark perl's
+threads next, which started a conversation from kbenson.  Kbenson
+created a benchmark between threads in perl and python in his "Yakety
+Hack" blog post at http://xrl.us/bhuna4. In turn I responded in my
+"Rural Perl" blog at http://xrl.us/bhunjn.
+
+Executing the run.pl perl script will generate a new output.txt file
+with your very own personalized, one of a kind results!
