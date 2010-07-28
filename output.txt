@@ -1,0 +1,124 @@
+COMMAND: /Users/juster/perl/5.12.1/bin/perl -v
+OUTPUT:
+
+This is perl 5, version 12, subversion 1 (v5.12.1) built for darwin-thread-multi-2level
+
+Copyright 1987-2010, Larry Wall
+
+Perl may be copied only under the terms of either the Artistic License or the
+GNU General Public License, which may be found in the Perl 5 source kit.
+
+Complete documentation for Perl, including FAQ lists, should be found on
+this system using "man perl" or "perldoc perl".  If you have access to the
+Internet, point your browser at http://www.perl.org/, the Perl Home Page.
+
+
+----
+
+COMMAND: /Users/juster/python/2.7/bin/python -V
+OUTPUT:
+Python 2.7
+
+----
+
+COMMAND: process.pl
+OUTPUT:
+Running with 2 processes
+Process 2 :: started at Thu Jul 22 15:35:07 2010
+Process 2 :: stopped at Thu Jul 22 15:35:12 2010
+Process 1 :: started at Thu Jul 22 15:35:07 2010
+Process 1 :: stopped at Thu Jul 22 15:35:13 2010
+Master logged 6.213 runtime
+Processes reported 11.316 combined runtime
+
+----
+
+COMMAND: process.py
+OUTPUT:
+Running with 2 processes
+Process 2 :: started at Thu Jul 22 15:35:13 2010
+Process 2 :: stopped at Thu Jul 22 15:35:18 2010
+Process 1 :: started at Thu Jul 22 15:35:13 2010
+Process 1 :: stopped at Thu Jul 22 15:35:18 2010
+Master logged 4.920 runtime
+Threads reported 9.827 combined runtime
+
+----
+
+COMMAND: process-share.pl
+OUTPUT:
+Running with 2 processes
+Process 1 :: started at Thu Jul 22 15:35:18 2010
+Process 1 :: stopped at Thu Jul 22 15:37:26 2010
+Process 2 :: started at Thu Jul 22 15:35:18 2010
+Process 2 :: stopped at Thu Jul 22 15:37:28 2010
+Master logged 129.500 runtime
+Processes reported 256.975 combined runtime
+Shared counter equals 20000000
+
+----
+
+COMMAND: process-share.py
+OUTPUT:
+Running with 2 processes
+Process 1 :: started at Thu Jul 22 15:37:28 2010
+Process 1 :: stopped at Thu Jul 22 15:39:30 2010
+Process 2 :: started at Thu Jul 22 15:37:28 2010
+Process 2 :: stopped at Thu Jul 22 15:39:30 2010
+Master logged 121.869 runtime
+Threads reported 243.698 combined runtime
+Shared counter equals 20000000
+
+----
+
+COMMAND: coroutine.pl
+OUTPUT:
+Running with 2 coroutines
+Coroutine 1 :: started at Thu Jul 22 15:39:30 2010
+Coroutine 2 :: started at Thu Jul 22 15:39:30 2010
+Coroutine 1 :: stopped at Thu Jul 22 15:39:51 2010
+Coroutine 2 :: stopped at Thu Jul 22 15:39:51 2010
+Master logged 20.573 runtime
+Coroutines reported 41.145 combined runtime
+
+----
+
+COMMAND: coroutine.py
+OUTPUT:
+Running with 2 coroutines
+Coroutine 1 :: started at Thu Jul 22 15:39:51 2010
+Coroutine 2 :: started at Thu Jul 22 15:39:51 2010
+Coroutine 1 :: stopped at Thu Jul 22 15:40:04 2010
+Coroutine 2 :: stopped at Thu Jul 22 15:40:04 2010
+Master logged 13.098 runtime
+Coroutines reported 25.946 combined runtime
+
+----
+
+COMMAND: coroutine-share.pl
+OUTPUT:
+Running with 2 coroutines
+Coroutine 1 :: started at Thu Jul 22 15:40:04 2010
+Coroutine 2 :: started at Thu Jul 22 15:40:04 2010
+Coroutine 1 :: stopped at Thu Jul 22 15:40:26 2010
+Coroutine 2 :: stopped at Thu Jul 22 15:40:26 2010
+Master logged 21.903 runtime
+Coroutines reported 43.805 combined runtime
+Shared counter equals 20000000
+
+----
+
+COMMAND: coroutine-share.py
+OUTPUT:
+Running with 2 coroutines
+Coroutine 1 :: started at Thu Jul 22 15:40:26 2010
+Coroutine 2 :: started at Thu Jul 22 15:40:26 2010
+Coroutine 1 :: stopped at Thu Jul 22 15:42:51 2010
+Coroutine 2 :: stopped at Thu Jul 22 15:42:52 2010
+Master logged 146.335 runtime
+Coroutines reported 291.801 combined runtime
+Shared counter equals 20000000
+
+----
+
+EOF
